@@ -17,14 +17,15 @@ function Sidebar() {
   const [channels, setChannels] = useState([]);
     
   useEffect(() => {
-    //run this code once when the sidebar component loads.
-    db.collection("rooms").onSnapshot((snapshot) =>
+    //run this code once when the (sidebar) component loads.
+    db.collection('rooms').onSnapshot((snapshot) =>(    
       setChannels(
-        snapshot.docs.map((doc) => ({
+        snapshot.docs.map(doc => ({
           id: doc.id,
-          name: doc.data().name
+          name: doc.data().name,
         }))
       )
+    )
     );
   }, []);
 
